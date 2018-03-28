@@ -2,7 +2,6 @@ const mongoose = require('mongoose')
 const Schema   = mongoose.Schema
 
 const answerSchema = new Schema({
-    title     : String,
     answerBody : String,
     userid : {type: Schema.Types.ObjectId, ref: `User`},
     upvote : [{
@@ -13,8 +12,13 @@ const answerSchema = new Schema({
         type:Schema.Types.ObjectId, 
         ref: 'User'
     }],
+    questionid: {type: Schema.Types.ObjectId, ref: `Question`},
+    createdAt : {
+        type : Date,
+        default : Date.now
+    }
 })
 
-const Answer = mongoose.model('Question', questionSchema);
+const Answer = mongoose.model('Answer', answerSchema);
 
 module.exports = Answer;

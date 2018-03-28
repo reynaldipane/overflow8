@@ -13,6 +13,10 @@ const questionSchema = new Schema({
         type:Schema.Types.ObjectId, 
         ref: 'User'
     }],
+    createdAt : {
+        type : Date,
+        default : Date.now
+    }
 })
 
 const Question = mongoose.model('Question', questionSchema);
